@@ -34,9 +34,9 @@ router.post('/',
 
 router.post('/', (req, res) => {
       let dataToSend;
-      let python_loc = path.join(__dirname, '../python_module/Test.py');
+      let python_loc = path.join(__dirname, '../python_module/Alter_file.py');
       console.log(python_loc);
-      const python = spawn('python', [python_loc]);
+      const python = spawn('python', [python_loc, user_file]);
       python.stdout.on('data', (data) => {
             dataToSend = data.toString();
             console.log(dataToSend);
@@ -46,5 +46,4 @@ router.post('/', (req, res) => {
       })
       }
 );
-
 module.exports = router;

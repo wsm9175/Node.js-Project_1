@@ -3,7 +3,13 @@
       <title>result.page</title>
       <style>
             li {display: inline;}
+
       </style>
+      <meta charset="UTF-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
       <div>
@@ -11,20 +17,345 @@
             <h3>20170844 우성민</h3>
       </div>
       <div>
+            <form id="form" action="/result_back" method="post" enctype="multipart/form-data">
+                  <ul>
+                        <li><button id="core1" type="button" onclick="core1_click()">core1</button><li>
+                        <li><button id="core2" type="button" onclick="core2_click()">core2</button></li>
+                        <li><button id="core3" type="button"onclick="core3_click()">core3</button></li>
+                        <li><button id="core4" type="button"onclick="core4_click()">core4</button></li>
+                        <li><button id="core5" type="button"onclick="core5_click()">core5</button></li>
+                  </ul>
+            </form>
             <ul>
-                  <li><button id="core1" type="button" onclick=";">core1</button><li>
-                  <li><button id="core2" type="button">core2</button></li>
-                  <li><button id="core3" type="button">core3</button></li>
-                  <li><button id="core4" type="button">core4</button></li>
-                  <li><button id="core5" type="button">core5</button></li>
-            </ul>
-            <ul>
-                  <li><button id="task1" type="button">task1 </button><li>
-                  <li><button id="task2" type="button">task2 </button></li>
-                  <li><button id="task3" type="button">task3 </button></li>
-                  <li><button id="task4" type="button">task4 </button></li>
-                  <li><button id="task5" type="button">task5 </button></li>
+                  <li><button id="task1" type="button" onclick="task1_click()">task1 </button><li>
+                  <li><button id="task2" type="button" onclick="task2_click()">task2 </button></li>
+                  <li><button id="task3" type="button" onclick="task3_click()">task3 </button></li>
+                  <li><button id="task4" type="button" onclick="task4_click()">task4 </button></li>
+                  <li><button id="task5" type="button" onclick="task5_click()">task5 </button></li>
             </ul>
       </div>
+      <div>
+          <canvas id="myChart"></canvas>
+      </div>
+      <!-- 부트스트랩 --> 
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script>
+            async function core1_click() {
+
+                  var xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                        var input_value = JSON.parse(xhr.responseText);
+                        var ctx = document.getElementById('myChart').getContext('2d'); 
+                        var chart = new Chart(ctx, { // 챠트 종류를 선택 
+                        type: 'line',
+                        data: { labels: ['task1', 'task2', 'task3', 'task4', 'task5'], 
+                        datasets: [{ 
+                        label: 'max', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'red', 
+                        data: [input_value["max_task1"], input_value["max_task2"], input_value["max_task3"], input_value["max_task4"], input_value["max_task5"]], 
+                         },{ 
+                        label: 'avg', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'blue', 
+                        data: [input_value["avg_task1"], input_value["avg_task2"], input_value["avg_task3"], input_value["avg_task4"], input_value["avg_task5"]], 
+                         },{ 
+                        label: 'min', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'black', 
+                        data: [input_value["min_task1"], input_value["min_task2"], input_value["min_task3"], input_value["min_task4"], input_value["min_task5"]], 
+                  }] 
+                   }, // 옵션
+                        options: {} 
+                          });
+                        
+                  };
+                  xhr.open('GET', '/result_back/core1', true);
+                  xhr.send();
+            }
+            async function core2_click() {
+                  var xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                        var input_value = JSON.parse(xhr.responseText); 
+                        var ctx = document.getElementById('myChart').getContext('2d'); 
+                        var chart = new Chart(ctx, { // 챠트 종류를 선택 
+                        type: 'line', // 챠트를 그릴 데이타 
+                        data: { labels: ['task1', 'task2', 'task3', 'task4', 'task5'], 
+                        datasets: [{ 
+                        label: 'max', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'red', 
+                        data: [input_value["max_task1"], input_value["max_task2"], input_value["max_task3"], input_value["max_task4"], input_value["max_task5"]], 
+                  },{ 
+                        label: 'avg', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'blue', 
+                        data: [input_value["avg_task1"], input_value["avg_task2"], input_value["avg_task3"], input_value["avg_task4"], input_value["avg_task5"]], 
+                  },{ 
+                        label: 'min', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'black', 
+                        data: [input_value["min_task1"], input_value["min_task2"], input_value["min_task3"], input_value["min_task4"], input_value["min_task5"]], 
+                  }] 
+                                }, // 옵션
+                                options: {} 
+                     });
+                  };
+                  xhr.open('GET', '/result_back/core2', true);
+                  xhr.send();
+            }
+            async function core3_click() {
+                  var xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                        var input_value = JSON.parse(xhr.responseText);
+                        var ctx = document.getElementById('myChart').getContext('2d'); 
+                        var chart = new Chart(ctx, { // 챠트 종류를 선택 
+                  type: 'line', // 챠트를 그릴 데이타 
+                  data: { labels: ['task1', 'task2', 'task3', 'task4', 'task5'], 
+                  datasets: [{ 
+                        label: 'max', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'red', 
+                        data: [input_value["max_task1"], input_value["max_task2"], input_value["max_task3"], input_value["max_task4"], input_value["max_task5"]], 
+                  },{ 
+                        label: 'avg', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'blue', 
+                        data: [input_value["avg_task1"], input_value["avg_task2"], input_value["avg_task3"], input_value["avg_task4"], input_value["avg_task5"]], 
+                  },{ 
+                        label: 'min', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'black', 
+                        data: [input_value["min_task1"], input_value["min_task2"], input_value["min_task3"], input_value["min_task4"], input_value["min_task5"]], 
+                  }] 
+            }, // 옵션
+             options: {} 
+            });
+                  };
+                  xhr.open('GET', '/result_back/core3', true);
+                  xhr.send();
+            }
+            async function core4_click() {
+                  var xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                        var input_value = JSON.parse(xhr.responseText);
+                        var ctx = document.getElementById('myChart').getContext('2d'); 
+                        var chart = new Chart(ctx, { // 챠트 종류를 선택 
+                  type: 'line', // 챠트를 그릴 데이타 
+                  data: { labels: ['task1', 'task2', 'task3', 'task4', 'task5'], 
+                  datasets: [{ 
+                        label: 'max', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'red', 
+                        data: [input_value["max_task1"], input_value["max_task2"], input_value["max_task3"], input_value["max_task4"], input_value["max_task5"]], 
+                  },{ 
+                        label: 'avg', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'blue', 
+                        data: [input_value["avg_task1"], input_value["avg_task2"], input_value["avg_task3"], input_value["avg_task4"], input_value["avg_task5"]], 
+                  },{ 
+                        label: 'min', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'black', 
+                        data: [input_value["min_task1"], input_value["min_task2"], input_value["min_task3"], input_value["min_task4"], input_value["min_task5"]], 
+                  }] 
+            }, // 옵션
+             options: {} 
+            });
+                  };
+                  xhr.open('GET', '/result_back/core4', true);
+                  xhr.send();
+            }
+            async function core5_click() {
+                  var xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                        var input_value = JSON.parse(xhr.responseText);
+                        var ctx = document.getElementById('myChart').getContext('2d'); 
+                        var chart = new Chart(ctx, { // 챠트 종류를 선택 
+                  type: 'line', // 챠트를 그릴 데이타 
+                  data: { labels: ['task1', 'task2', 'task3', 'task4', 'task5'], 
+                  datasets: [{ 
+                        label: 'max', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'red', 
+                        data: [input_value["max_task1"], input_value["max_task2"], input_value["max_task3"], input_value["max_task4"], input_value["max_task5"]], 
+                  },{ 
+                        label: 'avg', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'blue', 
+                        data: [input_value["avg_task1"], input_value["avg_task2"], input_value["avg_task3"], input_value["avg_task4"], input_value["avg_task5"]], 
+                  },{ 
+                        label: 'min', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'black', 
+                        data: [input_value["min_task1"], input_value["min_task2"], input_value["min_task3"], input_value["min_task4"], input_value["min_task5"]], 
+                  }] 
+            }, // 옵션
+             options: {} 
+            });
+                  };
+                  xhr.open('GET', '/result_back/core5', true);
+                  xhr.send();
+            }
+            async function task1_click() {
+                  var xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                        var input_value = JSON.parse(xhr.responseText);
+                        var ctx = document.getElementById('myChart').getContext('2d'); 
+                        var chart = new Chart(ctx, { // 챠트 종류를 선택 
+                  type: 'line', // 챠트를 그릴 데이타 
+                  data: { labels: ['core1', 'core2', 'core3', 'core4', 'core5'], 
+                  datasets: [{ 
+                        label: 'max', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'red', 
+                        data: [input_value["max_core1"], input_value["max_core2"], input_value["max_core3"], input_value["max_core4"], input_value["max_core5"]], 
+                  },{ 
+                        label: 'avg', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'blue', 
+                        data: [input_value["avg_core1"], input_value["avg_core2"], input_value["avg_core3"], input_value["avg_core4"], input_value["avg_core5"]], 
+                  },{ 
+                        label: 'min', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'black', 
+                        data: [input_value["min_core1"], input_value["min_core2"], input_value["min_core3"], input_value["min_core4"], input_value["min_core5"]], 
+                  }] 
+            }, // 옵션
+             options: {} 
+            });
+                  };
+                  xhr.open('GET', '/result_back/task1', true);
+                  xhr.send();
+            }
+            async function task2_click() {
+                  var xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                        var input_value = JSON.parse(xhr.responseText);
+                        var ctx = document.getElementById('myChart').getContext('2d'); 
+                        var chart = new Chart(ctx, { // 챠트 종류를 선택 
+                  type: 'line', // 챠트를 그릴 데이타 
+                  data: { labels: ['core1', 'core2', 'core3', 'core4', 'core5'], 
+                  datasets: [{ 
+                        label: 'max', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'red', 
+                        data: [input_value["max_core1"], input_value["max_core2"], input_value["max_core3"], input_value["max_core4"], input_value["max_core5"]], 
+                  },{ 
+                        label: 'avg', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'blue', 
+                        data: [input_value["avg_core1"], input_value["avg_core2"], input_value["avg_core3"], input_value["avg_core4"], input_value["avg_core5"]], 
+                  },{ 
+                        label: 'min', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'black', 
+                        data: [input_value["min_core1"], input_value["min_core2"], input_value["min_core3"], input_value["min_core4"], input_value["min_core5"]], 
+                  }] 
+            }, // 옵션
+             options: {} 
+            });
+                  };
+                  xhr.open('GET', '/result_back/task2', true);
+                  xhr.send();
+            }
+            async function task3_click() {
+                  var xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                        var input_value = JSON.parse(xhr.responseText);
+                        var ctx = document.getElementById('myChart').getContext('2d'); 
+                        var chart = new Chart(ctx, { // 챠트 종류를 선택 
+                  type: 'line', // 챠트를 그릴 데이타 
+                  data: { labels: ['core1', 'core2', 'core3', 'core4', 'core5'],
+                  datasets: [{ 
+                        label: 'max', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'red', 
+                        data: [input_value["max_core1"], input_value["max_core2"], input_value["max_core3"], input_value["max_core4"], input_value["max_core5"]], 
+                  },{ 
+                        label: 'avg', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'blue', 
+                        data: [input_value["avg_core1"], input_value["avg_core2"], input_value["avg_core3"], input_value["avg_core4"], input_value["avg_core5"]], 
+                  },{ 
+                        label: 'min', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'black', 
+                        data: [input_value["min_core1"], input_value["min_core2"], input_value["min_core3"], input_value["min_core4"], input_value["min_core5"]], 
+                  }] 
+            }, // 옵션
+             options: {} 
+            });
+                  };
+                  xhr.open('GET', '/result_back/task3', true);
+                  xhr.send();
+            }
+
+            async function task4_click() {
+                  var xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                        var input_value = JSON.parse(xhr.responseText);
+                        var ctx = document.getElementById('myChart').getContext('2d'); 
+                        var chart = new Chart(ctx, { // 챠트 종류를 선택 
+                  type: 'line', // 챠트를 그릴 데이타 
+                  data: { labels: ['core1', 'core2', 'core3', 'core4', 'core5'],
+                  datasets: [{ 
+                        label: 'max', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'red', 
+                        data: [input_value["max_core1"], input_value["max_core2"], input_value["max_core3"], input_value["max_core4"], input_value["max_core5"]], 
+                  },{ 
+                        label: 'avg', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'blue', 
+                        data: [input_value["avg_core1"], input_value["avg_core2"], input_value["avg_core3"], input_value["avg_core4"], input_value["avg_core5"]], 
+                  },{ 
+                        label: 'min', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'black', 
+                        data: [input_value["min_core1"], input_value["min_core2"], input_value["min_core3"], input_value["min_core4"], input_value["min_core5"]], 
+                  }] 
+            }, // 옵션
+             options: {} 
+            });
+                  };
+                  xhr.open('GET', '/result_back/task4', true);
+                  xhr.send();
+            }
+
+            async function task5_click() {
+                  var xhr = new XMLHttpRequest();
+                  xhr.onload = function() {
+                        var input_value = JSON.parse(xhr.responseText);
+                        var ctx = document.getElementById('myChart').getContext('2d'); 
+                        var chart = new Chart(ctx, { // 챠트 종류를 선택 
+                  type: 'line', // 챠트를 그릴 데이타 
+                  data: { labels: ['core1', 'core2', 'core3', 'core4', 'core5'],
+                  datasets: [{ 
+                        label: 'max', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'red', 
+                        data: [input_value["max_core1"], input_value["max_core2"], input_value["max_core3"], input_value["max_core4"], input_value["max_core5"]], 
+                  },{ 
+                        label: 'avg', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'blue', 
+                        data: [input_value["avg_core1"], input_value["avg_core2"], input_value["avg_core3"], input_value["avg_core4"], input_value["avg_core5"]], 
+                  },{ 
+                        label: 'min', 
+                        backgroundColor: 'transparent', 
+                        borderColor: 'black', 
+                        data: [input_value["min_core1"], input_value["min_core2"], input_value["min_core3"], input_value["min_core4"], input_value["min_core5"]], 
+                  }] 
+            }, // 옵션
+             options: {} 
+            });
+                  };
+                  xhr.open('GET', '/result_back/task5', true);
+                  xhr.send();
+            }
+      </script>
 </body>
 </html>

@@ -21,7 +21,7 @@ def alter_txt(lines, write_file):
 
 def main(file_name):
     INPUT_File_LOC = 'C:/Users/seongminWoo/Desktop/Project/Node.js-기업설계특강프로젝트/uploads/' + file_name
-    OUTPUT_FILE_LOC = 'C:/Users/seongminWoo/Desktop/Project/Node.js-기업설계특강프로젝트/uploads/' + 'alter' +file_name + '.csv'
+    OUTPUT_FILE_LOC = 'C:/Users/seongminWoo/Desktop/Project/Node.js-기업설계특강프로젝트/process_file/' +file_name
     read_file = open(INPUT_File_LOC, 'r', encoding='utf-8')
     write_file = open(OUTPUT_FILE_LOC, 'w', encoding='utf-8')
     lines = read_file.readlines()

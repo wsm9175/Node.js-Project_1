@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="749be1b6-4dbc-4c28-b134-cce7cf235050" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Alter_file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../uploads/file.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../uploads/제공데이터1622015437802.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../uploads/제공데이터1622015472065.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../uploads/제공데이터1622015554200.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../uploads/제공데이터1622015583969.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uploads/11621930898224.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uploads/11621930944022.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uploads/11621944889635.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uploads/11621950164524.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uploads/11621993097305.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uploads/11621993161154.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uploads/새 텍스트 문서1621930954394.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uploads/새 텍스트 문서1621951553520.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uploads/새 텍스트 문서1621951654451.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alter_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/Alter_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../uploads/alter제공데이터1622016681155.txt.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../uploads/제공데이터1622016681155.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

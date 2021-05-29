@@ -7,8 +7,7 @@ const fs = require('fs');
 const nunjucks = require('nunjucks');
 
 const { sequelize } = require('./models');
-const indexRouter = require('./routes/index');
-const resultRouter = require('./routes/result');
+const routes = require('./routes');
 
 dotenv.config() //dotenv에서 process.env로 만드는 과정 수행
 const app = express(); //server 실행. Express <== http를 다 포함함.
@@ -41,9 +40,7 @@ try{
       fs.mkdirSync('uploads');
 }
 
-app.use('/', indexRouter);
-// app.use('/result', resultRouter);
-
+app.use('/', routes);
 
 app.listen(app.get('port'), () => {
       console.log(app.get('port'), '3000번 포트에서 대기 중');
